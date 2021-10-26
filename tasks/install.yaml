@@ -1,0 +1,22 @@
+- name: Install COPR
+  ansible.builtin.package:
+    name: 'dnf-command(copr)'
+    state: present
+
+- name: Enable COPR Caddy Repo
+  community.general.copr:
+    name: '@caddy/caddy'
+    state: enabled
+    chroot: centos-8-x86_64
+
+- name: Install Caddy
+  ansible.builtin.package:
+    name:
+      - caddy
+
+- name: Create Caddy Sites Folder
+  file:
+    path: /etc/caddy/sites-enabled
+    state: directory
+    owner: caddy
+    group: caddy

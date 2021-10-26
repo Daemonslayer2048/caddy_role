@@ -1,0 +1,19 @@
+- name: Allow HTTP Trafic Through Firewalld
+  ansible.posix.firewalld:
+    rich_rule: rule family="ipv4" port port="80" protocol="tcp" accept
+    zone: public
+    permanent: yes
+    immediate: yes
+    state: enabled
+  notify:
+    - Restart Firewalld
+
+- name: Allow HTTPS Trafic Through Firewalld
+  ansible.posix.firewalld:
+    rich_rule: rule family="ipv4" port port="443" protocol="tcp" accept
+    zone: public
+    permanent: yes
+    immediate: yes
+    state: enabled
+  notify:
+    - Restart Firewalld

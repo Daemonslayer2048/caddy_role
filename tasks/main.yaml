@@ -1,0 +1,20 @@
+- name: Ping Caddy
+  ansible.builtin.ping:
+
+- name: Include SELinux
+  include: selinux.yaml
+
+- name: Include Install
+  include: install.yaml
+
+- name: Setup Caddy
+  include: setup.yaml
+
+- name: Include Firewalld
+  include: firewalld.yaml
+
+- name: Enable Caddy
+  ansible.builtin.service:
+    name: caddy
+    state: started
+    enabled: yes

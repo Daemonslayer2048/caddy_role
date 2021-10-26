@@ -1,0 +1,9 @@
+- name: Restart Firewalld
+  ansible.builtin.systemd:
+    name: firewalld
+    state: restarted
+
+- name: Restart Caddy
+  ansible.builtin.systemd:
+    name: caddy
+    state: restarted

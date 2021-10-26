@@ -1,0 +1,6 @@
+- name: Copy Base Config to VM
+  ansible.builtin.template:
+    src: ./templates/Caddyfile.j2
+    dest: /etc/caddy/Caddyfile
+  notify:
+    - Restart Caddy
