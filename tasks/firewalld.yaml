@@ -2,8 +2,8 @@
   ansible.posix.firewalld:
     rich_rule: rule family="ipv4" port port="80" protocol="tcp" accept
     zone: public
-    permanent: yes
-    immediate: yes
+    permanent: true
+    immediate: true
     state: enabled
   notify:
     - Restart Firewalld
@@ -12,8 +12,8 @@
   ansible.posix.firewalld:
     rich_rule: rule family="ipv4" port port="443" protocol="tcp" accept
     zone: public
-    permanent: yes
-    immediate: yes
+    permanent: true
+    immediate: true
     state: enabled
   notify:
     - Restart Firewalld

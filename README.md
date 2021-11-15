@@ -1,38 +1,20 @@
-Role Name
-=========
+# Anisble Server Common Role  
+This roles setups up a [Caddy v2](https://caddyserver.com/) reverse proxy server.
 
-A brief description of the role goes here.
+## Requirements
+### ansible-galaxy
+__Collections:__
+  - community.general
 
-Requirements
-------------
+__Roles:__
+  - daemonslayer2048.common
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+## Variables
+| Variable | Type | Required | Default | Example |
+|    -     |   -  |     -    |    -    |    -    |
+|caddy_acme_ca| string | true | https://acme-staging-v02.api.letsencrypt.org/directory | https://acme-v02.api.letsencrypt.org/directory |
+|caddy_email| string | true | none@null.com | none@null.com |
 
-Role Variables
---------------
-
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
-
-Example Playbook
-----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
-
-License
--------
-
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+# Notes:
+## Testing Issues
+  - Selinux Modules can not be tested in podman so these tests are performed outside of the stesting suite :(

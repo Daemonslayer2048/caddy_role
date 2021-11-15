@@ -1,7 +1,8 @@
 - name: Check if Custom SELinux Module is Installed
-  shell: semodule -l | grep caddy_selinux
+  shell:
+    cmd: semodule -l | grep caddy_selinux
   register: module_installed
-  ignore_errors: yes
+  ignore_errors: true
 
 # There should be a more idempotent way to handle this
 - name: Install Custom Module
@@ -12,11 +13,14 @@
         dest: /tmp/
 
     - name: Convert TE to SELinux Module
-      shell: checkmodule -M -m -o /tmp/caddy_selinux.mod /tmp/caddy_selinux.te
+      ansible.builtin.shell:
+        cmd: checkmodule -M -m -o /tmp/caddy_selinux.mod /tmp/caddy_selinux.te
 
     - name: Convert SELinux Module to PP
-      shell: semodule_package -o /tmp/caddy_selinux.pp -m /tmp/caddy_selinux.mod
+      ansible.builtin.shell:
+        cmd: semodule_package -o /tmp/caddy_selinux.pp -m /tmp/caddy_selinux.mod
 
     - name: Install SELinux PP File
-      shell: semodule -i /tmp/caddy_selinux.pp
+      ansible.builtin.shell:
+        cmd: semodule -i /tmp/caddy_selinux.pp
   when: module_installed.rc == 1
