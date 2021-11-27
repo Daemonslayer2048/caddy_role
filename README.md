@@ -1,4 +1,4 @@
-# Anisble Server Common Role  
+# Ansible Server Common Role  
 This roles setups up a [Caddy v2](https://caddyserver.com/) reverse proxy server.
 
 ## Requirements
