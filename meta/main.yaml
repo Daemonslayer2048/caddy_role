@@ -1,6 +1,6 @@
 galaxy_info:
   author: Jacob Hanafin
-  description: A base role that should be applied to all servers
+  description: Installs a Caddy reverse proxy server
   namespace: daemonslayer2048
   role_name: caddy
   license: GPL-3.0-only
